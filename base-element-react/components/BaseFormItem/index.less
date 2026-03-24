@@ -1,0 +1,84 @@
+.base-form-item {
+  display: flex;
+  margin-bottom: 24px;
+
+  &.item-inline {
+    display: inline-flex;
+    margin-right: 24px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+  // 对齐方式 (默认居中)
+  &.item-align-middle {
+    align-items: center;
+  }
+
+  &.item-align-top {
+    align-items: flex-start;
+  }
+
+  &.item-align-baseline {
+    align-items: baseline;
+  }
+
+  &.item-align-bottom {
+    align-items: flex-end;
+  }
+
+  .form-label {
+    position: relative;
+    text-align: right;
+    // 必填样式
+    .required {
+      position: relative;
+      left: -10px;
+      display: inline-block;
+      width: 0;
+      color: red;
+    }
+    // label宽度 (默认120px)
+    &.label-width-auto {
+      width: auto;
+    }
+
+    &.label-width-40 {
+      width: 40px;
+    }
+
+    &.label-width-80 {
+      width: 80px;
+    }
+
+    &.label-width-100 {
+      width: 100px;
+    }
+
+    &.label-width-120 {
+      width: 120px;
+    }
+
+    &.label-width-140 {
+      width: 140px;
+    }
+
+    &.label-width-160 {
+      width: 160px;
+    }
+
+    &.label-width-180 {
+      width: 180px;
+    }
+
+    &.label-width-200 {
+      width: 200px;
+    }
+  }
+
+  .form-content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+}

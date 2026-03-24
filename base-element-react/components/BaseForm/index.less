@@ -1,0 +1,262 @@
+.base-form {
+  &.ant-form-inline {
+    // 公共
+    > .ant-form-item {
+      // andt4.22以上版本的item多一层样式'ant-form-item-row'
+      > .ant-form-item-row {
+        display: block;
+        width: 100%;
+
+        .ant-form-item-label,
+        .ant-form-item-control {
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+
+      &.base-item-flex {
+        > .ant-form-item-row {
+          display: flex;
+
+          .ant-form-item-control {
+            flex: 1;
+          }
+
+          .base-editor {
+            min-width: unset;
+          }
+        }
+      }
+
+      .ant-form-item-label {
+        width: 120px;
+        min-width: unset;
+        line-height: 1.2;
+        word-wrap: break-all;
+        white-space: normal;
+      }
+
+      .ant-form-item-control {
+        width: 240px;
+
+        .ant-picker-range,
+        .ant-picker {
+          width: 100%;
+        }
+
+        // 这组件的select-label不占位
+        .base-select-input .select-label {
+          position: absolute;
+          top: 0;
+          right: 100%;
+          z-index: 9;
+        }
+      }
+    }
+
+    // label宽度 (BaseForm默认120px, BaseList默认100px)
+    &.label-width-auto > .ant-form-item .ant-form-item-label {
+      width: auto;
+    }
+
+    &.label-width-40 > .ant-form-item .ant-form-item-label {
+      width: 40px;
+    }
+
+    &.label-width-80 > .ant-form-item .ant-form-item-label {
+      width: 80px;
+    }
+
+    &.label-width-100 > .ant-form-item .ant-form-item-label {
+      width: 100px;
+    }
+
+    &.label-width-140 > .ant-form-item .ant-form-item-label {
+      width: 140px;
+    }
+
+    &.label-width-160 > .ant-form-item .ant-form-item-label {
+      width: 160px;
+    }
+
+    &.label-width-180 > .ant-form-item .ant-form-item-label {
+      width: 180px;
+    }
+
+    &.label-width-200 > .ant-form-item .ant-form-item-label {
+      width: 200px;
+    }
+
+    // 表单域的宽度 (默认240)
+    &.value-width-330 > .ant-form-item .ant-form-item-control {
+      width: 330px;
+    }
+
+    &.value-width-420 > .ant-form-item .ant-form-item-control {
+      width: 420px;
+    }
+
+    // label的位置 (默认右边)
+    &.label-align-left > .ant-form-item .ant-form-item-label {
+      overflow: visible;
+      text-align: left;
+
+      label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+        position: absolute;
+        left: -8px;
+        z-index: 9;
+      }
+    }
+
+    &.label-align-top > .ant-form-item {
+      display: block;
+
+      > .ant-form-item-label {
+        display: block;
+        text-align: left;
+      }
+    }
+  }
+
+  // 块级
+  &.base-form-block {
+    // 每个item一行
+    > .ant-form-item {
+      display: block;
+      width: 100%;
+      // item宽度自适应: sty:{ display: 'inline-block' } 定宽, 加前后缀可能会换行
+      &.base-item-inline-block {
+        width: unset;
+      }
+      // item宽度自适应: sty:{ width: 'auto' } 不定宽
+      &.base-item-auto {
+        > .ant-form-item-row {
+          .ant-form-item-control {
+            width: auto;
+
+            .ant-input-affix-wrapper {
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 一行几个item
+  &.item-col {
+    display: block;
+
+    > .ant-form-item {
+      display: inline-flex;
+
+      > .ant-form-item-row {
+        display: flex;
+        flex-flow: row;
+
+        .ant-form-item-control {
+          flex: 1;
+
+          .base-select-input {
+            display: flex;
+
+            .select-value {
+              flex: 1;
+              width: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 多选组的对齐
+  .ant-checkbox-group {
+    .ant-checkbox-wrapper + .ant-checkbox-wrapper {
+      margin-left: unset;
+    }
+
+    .ant-checkbox-wrapper {
+      margin-right: 8px;
+      margin-left: unset;
+    }
+  }
+
+  // 前后缀
+  .base-item {
+    position: relative;
+
+    .base-item-before {
+      display: inline-block;
+      padding: 8px 8px 8px 0;
+      line-height: 1.2;
+
+      &.div {
+        display: block;
+      }
+    }
+
+    .base-item-tip {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      min-width: 200px;
+      padding: 8px;
+      line-height: 1.2;
+      color: #999;
+
+      .ant-btn {
+        margin-top: -8px;
+      }
+
+      .ant-btn-link {
+        padding-left: 0;
+      }
+    }
+
+    .base-item-after {
+      display: inline-block;
+      padding: 8px 0 8px 8px;
+      line-height: 1.2;
+      color: #999;
+
+      &.div {
+        display: block;
+      }
+    }
+
+    .base-textarea + .base-item-tip {
+      top: auto;
+      bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .base-textarea + .base-item-after {
+      padding: 0;
+      margin-top: 4px;
+    }
+
+    .ant-input-textarea-show-count + .base-item-after {
+      margin-top: 20px;
+    }
+
+    .base-upload + .base-item-after {
+      vertical-align: bottom;
+    }
+  }
+
+  // label空串占位的情况
+  .base-item-label-hide {
+    .ant-form-item-label > label::after {
+      content: '';
+    }
+  }
+
+  // 输入框禁用样式
+  .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector,
+  .ant-input-affix-wrapper-disabled,
+  .ant-input[disabled] {
+    color: #333;
+    background-color: #fafafa;
+  }
+}

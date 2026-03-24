@@ -1,0 +1,43 @@
+@import '~antd/es/style/themes/default.less';
+
+.base-button {
+  &.ant-btn {
+    user-select: text;
+  }
+
+  &.ant-btn-sm {
+    font-size: 12px;
+  }
+
+  &.ant-btn-link,
+  &.ant-btn-text {
+    text-align: left;
+    word-break: break-all;
+    white-space: normal;
+  }
+
+  // loading定位,避免显示时占位,导致页面闪动
+  &.ant-btn > .ant-btn-loading-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+    height: 100%;
+    color: @primary-color;
+    background-color: rgb(255 255 255 / 35%);
+    border-radius: 2px;
+    transition: none;
+
+    .anticon {
+      padding-right: 0;
+    }
+
+    & + .anticon {
+      margin-left: 0;
+    }
+  }
+}

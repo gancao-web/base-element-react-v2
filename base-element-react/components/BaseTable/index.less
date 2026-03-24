@@ -1,0 +1,122 @@
+.base-table {
+  padding: 24px;
+  background-color: #fff;
+  // 斑马纹
+  &.stripe-table {
+    .ant-table-row:nth-child(2n) {
+      .ant-table-cell {
+        visibility: top;
+        background-color: #f8f8f8;
+      }
+    }
+  }
+
+  // 内容顶对齐
+  &.row-cell-top {
+    .ant-table-row .ant-table-cell {
+      vertical-align: top;
+    }
+  }
+
+  // 表头
+  .ant-table-thead > tr > th {
+    font-weight: bold;
+  }
+
+  // 分页
+  .ant-table-pagination.ant-pagination {
+    margin-bottom: 0;
+  }
+
+  // 标签
+  .base-table-tag {
+    font-size: 14px;
+  }
+
+  .ant-table-tbody > tr > td {
+    // 文本按钮
+    &.base-col-btns {
+      padding: 7px 4px; // 与标题对齐
+
+      > .base-td-btn {
+        min-width: 58px; // 字数少的时候能对齐
+        padding-right: 4px; // 字数多的按钮之间有留白
+        padding-left: 4px; // 字数多的按钮之间有留白
+        text-align: inherit; // 跟随th的对齐方式
+      }
+    }
+
+    // 图标按钮
+    &.base-col-icons {
+      > .base-td-btn {
+        padding-right: 12px;
+        padding-left: 12px;
+        margin-right: -1px; // 避免左右边框重叠
+        margin-bottom: -1px; // 避免上下边框重叠
+
+        &:hover {
+          z-index: 9; // 避免边框被遮住
+          background-color: #f2f7fc;
+        }
+      }
+    }
+
+    // 标记最近一次点击的按钮
+    .btn-last-click {
+      z-index: 9;
+      color: #333;
+      background-color: #eee;
+    }
+  }
+
+  // 复选框禁用样式
+  .ant-checkbox-disabled .ant-checkbox-inner {
+    background-color: #eee;
+  }
+}
+
+// 表格中的tooltip
+.base-ellipsis-tooltip .ant-tooltip-inner {
+  max-height: 45vh;
+  overflow: auto;
+  border-radius: 5px;
+  // 滚动条轨道宽度
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  // 滚动条游标
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 6px;
+  }
+}
+
+// 表格'更多'按钮的popover
+.base-table-popover-more {
+  padding: 0;
+
+  .ant-popover-arrow {
+    display: none;
+  }
+
+  .ant-popover-inner {
+    border-radius: 8px;
+
+    .ant-popover-inner-content {
+      padding: 8px;
+
+      .ant-btn-link {
+        display: block; // 每个按钮一行
+        width: 100%; // 使背景撑满一行
+        padding-right: 12px;
+        padding-left: 12px;
+        white-space: nowrap;
+
+        &:hover {
+          background-color: #f7f7f9;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

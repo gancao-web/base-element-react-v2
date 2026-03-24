@@ -1,0 +1,104 @@
+@import '~antd/es/style/themes/default.less';
+
+.base-list {
+  position: relative;
+
+  // 仅配置了table时生效
+  .base-list-form {
+    position: relative;
+    padding: 24px;
+    background-color: #fff;
+    // margin-bottom: 12px; // 使用边框模拟背景,否则白色页面看不出分割的间隔
+    border-bottom: 12px solid #f0f2f5;
+
+    > .base-form {
+      overflow: hidden;
+      transition: height 0.3s;
+    }
+
+    &.form-callapse-hide {
+      .base-list-search {
+        .base-btn-callapse {
+          .callapse-icon {
+            transform: rotateZ(180deg);
+          }
+        }
+      }
+    }
+
+    .base-list-search {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      z-index: 9;
+
+      .ant-btn {
+        margin-left: 8px;
+      }
+
+      .base-btn-callapse {
+        padding-right: 10px;
+        padding-left: 10px;
+
+        .callapse-icon {
+          margin-right: -4px;
+          font-size: 12px;
+          transition: transform 0.3s;
+        }
+      }
+    }
+
+    .base-list-search-space {
+      display: inline-block;
+      width: 240px;
+      height: 32px;
+      vertical-align: top;
+    }
+  }
+
+  .base-list-tools {
+    display: flex;
+    padding: 12px 24px;
+    background-color: #fff;
+
+    &.base-list-tools-sticky {
+      position: sticky;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 6; // 大于table的z-index,确保在table之上
+    }
+
+    & + .base-table {
+      padding-top: 0;
+    }
+
+    .base-tool-left {
+      position: relative;
+      flex: 1;
+    }
+
+    .base-tool-right {
+      .base-tool-ics {
+        display: inline-block;
+        margin-left: 8px;
+
+        .base-tool-ic {
+          padding: 8px;
+
+          &:hover {
+            color: @link-color;
+          }
+        }
+      }
+    }
+
+    .base-tool-btn {
+      display: inline-block;
+
+      & + .base-tool-btn {
+        margin-left: 8px;
+      }
+    }
+  }
+}

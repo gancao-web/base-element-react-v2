@@ -1,0 +1,46 @@
+@import '~antd/es/style/themes/default.less';
+
+.base-sortable-item {
+  // position: relative; // 会影响子元素的定位,所以不采用伪类不占空间的方式实现线框指示,采用占位的border指示 (导致<Tabs type="line"/>下划线定位失效)
+  display: flow-root; // 解决子元素设置margin上下边距塌陷的问题
+  cursor: move;
+
+  // 禁用
+  &-disabled {
+    display: block;
+    cursor: auto;
+  }
+
+  // 拖拽中
+  &-dragging {
+    opacity: 0.5;
+  }
+
+  // 向前拖拽
+  &-forward {
+    border-top: 2px dashed @primary-color;
+  }
+
+  // 向后拖拽
+  &-backward {
+    border-bottom: 2px dashed @primary-color;
+  }
+
+  // 行内块级元素
+  &-inline {
+    display: inline-block;
+    vertical-align: top;
+
+    // 向左拖拽
+    &.base-sortable-item-forward {
+      border-top: none;
+      border-left: 2px dashed @primary-color;
+    }
+
+    // 向右拖拽
+    &.base-sortable-item-backward {
+      border-right: 2px dashed @primary-color;
+      border-bottom: none;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.base-page-modal .base-list {
+  // 弹窗中最后一个表单的统计信息占位,避免底部太靠弹窗下边
+  .base-form {
+    .ant-form-item:last-child {
+      .ant-input-textarea-show-count.ant-input-textarea-in-form-item::after {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // 列表表单
+  .base-list-form {
+    border-bottom-width: 8px;
+  }
+}
+
+// 抽屉
+.base-page-modal-drawer {
+  text-align: right;
+
+  .base-page-modal {
+    position: fixed;
+    animation: drawer-slide-in-right 0.3s forwards;
+
+    .ant-modal-body {
+      height: calc(100vh - 55px) !important;
+      max-height: unset !important;
+      padding-bottom: 72px !important;
+      overflow: auto;
+    }
+
+    .ant-modal-footer {
+      position: absolute;
+      right: 24px;
+      bottom: 0;
+      left: 24px;
+      z-index: 99;
+      text-align: center;
+      background-color: #fff;
+    }
+  }
+}
+
+@keyframes drawer-slide-in-right {
+  from {
+    right: -100%;
+  }
+
+  to {
+    right: 0;
+  }
+}

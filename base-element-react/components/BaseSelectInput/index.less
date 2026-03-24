@@ -1,0 +1,27 @@
+.base-select-input {
+  display: inline-flex;
+
+  .select-label {
+    flex-shrink: 0;
+    width: 120px;
+    overflow: hidden;
+    text-align: right;
+
+    .ant-select {
+      width: auto; // 无需撑满select-label的宽度,避免字数少的时候比较空
+      min-width: 80px; // 最少显示4个字
+
+      .ant-select-selection-item {
+        padding-right: 12px;
+      }
+
+      .ant-select-arrow {
+        right: 8px;
+      }
+    }
+  }
+
+  .select-value {
+    width: 240px;
+  }
+}
