@@ -1,6 +1,6 @@
 # base-element 的 react 版本
 
-## 基于 Ant Design 的管理后台配置化开发框架
+基于 React + Ant Design 的 JSON 配置化组件库，快速构建表单、表格、弹窗、CRUD页面
 
 ## 快速开始
 
