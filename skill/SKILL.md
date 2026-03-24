@@ -1,5 +1,5 @@
 ---
-name: 'base-element-react'
+name: 'base-element-react-v2'
 description: '基于 React + Ant Design 的 JSON 配置化组件库，快速构建表单、表格、弹窗、CRUD页面'
 ---
 
