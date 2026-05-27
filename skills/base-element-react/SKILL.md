@@ -15,6 +15,7 @@ description: '基于 React + Ant Design 的 JSON 配置化组件库，用于快�
 - 需要处理搜索栏、编辑表单、自定义表单项时，优先读 `references/form.md`。
 - 需要处理列表列、操作列、格式化展示时，优先读 `references/table.md`。
 - 需要处理联动、校验、目录规范、输入类型、颜色系统时，优先读 `references/patterns.md`。
+- 需要把旧版 `base-element-react` 页面迁移为新版目录和写法时，优先读 `references/migration-legacy-page.md`。
 - 修改代码前，优先保持现有模块目录、命名方式和 `dialogXxx` / `apiXxx` 风格一致。
 - 命中参考示例后，仍要回到当前代码库确认已有封装、类型定义和项目约定是否一致。
 - 优先检查工作区是否存在 `src/base-element-react` 源码；如果存在，先以该源码中的实际导出、类型定义和实现为准。
@@ -30,6 +31,7 @@ description: '基于 React + Ant Design 的 JSON 配置化组件库，用于快�
 - `references/form.md`
 - `references/table.md`
 - `references/patterns.md`
+- `references/migration-legacy-page.md`
 - `references/feedback.md`
 
 ## Feedback

@@ -123,6 +123,49 @@ const dialog: BaseDialog = (ctx): BaseDialogConfig => {
 };
 ```
 
+## 自定义 footer
+
+- 默认会显示 `取消`、`确认` 按钮。
+- 只想隐藏底部时，使用 `footer: null`。
+- 在默认按钮基础上再加一个或多个按钮时，使用 `footer: ReactNode`。
+
+```tsx
+import { Button, message, Space } from 'antd';
+import type { BaseDialog, BaseDialogConfig } from 'base-element-react';
+
+const dialog: BaseDialog = ({ refDialog, refPage }): BaseDialogConfig => {
+  return {
+    footer: (
+      <Space>
+        <Button onClick={refPage.closeDialog()}>关闭</Button>
+        <Button
+          onClick={async () => {
+            const form = await refDialog.current!.getParamValid();
+            await apiCancelTask(form);
+            refPage.closeDialog();
+            refPage.refresh();
+            message.success('取消成功');
+          }}
+        >
+          取消任务
+        </Button>
+        <Button
+          onClick={async () => {
+            const form = await refDialog.current!.getParamValid();
+            await apiSubmit(form);
+            refPage.closeDialog();
+            refPage.refresh();
+            message.success('提交成功');
+          }}
+        >
+          确认
+        </Button>
+      </Space>
+    ),
+  };
+};
+```
+
 ## 使用建议
 
 - 标准增删改弹窗优先走 `form + apiDetail + apiSubmit`。
