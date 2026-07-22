@@ -18,6 +18,7 @@ const config: BaseFormConfig = {
     { label: '多行文本', prop: 'remark', type: 'textarea' },
     { label: '富文本', prop: 'rich', comp: 'editor' },
     { label: '下拉选择', prop: 'status', comp: 'select', lib: STATUS_LIST },
+    { label: '自动补全', prop: 'doctor', comp: 'auto-complete', lib: DOCTOR_LIST },
     { label: '单选', prop: 'type', comp: 'radio', lib: TYPE_LIST },
     { label: '复选', prop: 'tags', comp: 'checkbox', lib: TAG_LIST },
     { label: '级联', prop: 'area', comp: 'cascader', lib: BASE_AREAS },
@@ -131,6 +132,7 @@ const CustomComp = (props: BaseFormItemProps) => {
 - 搜索栏优先保持轻量，复杂编辑逻辑放弹窗表单。
 - 先用标准 `comp` / `type`，仅在确实不覆盖时再写自定义组件。
 - `select` 和 `checkbox` 的值会按 item.value 回填，返回类型默认跟随初始值：初始值为字符串时返回逗号分隔字符串(默认)，初始值为 [] 时返回数组。
+- `auto-complete` 支持 `{ comp: 'auto-complete', lib }` 的配置化写法；静态 `lib` 默认前端过滤，配置 `onSearch: true` 时会在输入时按关键字重新请求接口枚举。
 - `upload` 的值默认返回逗号分隔的上传地址；如果 `value` 设置为 `[]`，则返回文件信息数组，可取到文件大小、名称、id 等。
 - `select` 和 `cascader` 可通过 `showSearch: true` 开启前端搜索，默认匹配 `label`。如果还想匹配 `value`，建议把 `value` 一并展示到 `label` 中，例如在 `filterResult` 里处理为：`label:【${item.id}】${item.name}`。
 - `select` 还支持 `onSearch: true`，可在输入时实时请求接口搜索选项。此时从 `lib` 的 `param` 中解构出 `keyword` 并传给后端即可。`onSearch` 适合单选场景，但不适合多选，因为无法回显已选项。

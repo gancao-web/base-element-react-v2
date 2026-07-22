@@ -166,6 +166,58 @@ const dialog: BaseDialog = ({ refDialog, refPage }): BaseDialogConfig => {
 };
 ```
 
+## 提交成功后交给调用者处理
+
+通用弹窗不应包含特定页面的列表更新、埋点或区域联动逻辑。此类行为通过可选 `onSuccess` 回调交给调用者处理，弹窗只负责参数整理和提交接口。
+
+仅做列表局部更新时：
+
+- 页面持有 `refPage`，并通过 `setList` 进行不可变更新。
+- 设置 `submitReloadType: 'none'`，避免默认的 `auto` 在提交后重新请求列表（编辑时 `refresh`，新增时 `reload`）。
+
+```tsx
+import type { BaseObj, BaseDialog, BaseDialogConfig } from 'base-element-react';
+
+type DialogTagsCtx = {
+  onSuccess?: (form: BaseObj, orderIds: string[]) => void | Promise<void>;
+};
+
+const dialogTags: BaseDialog<DialogTagsCtx> = ({
+  isEdit,
+  row,
+  selectedRows,
+  onSuccess,
+}): BaseDialogConfig => {
+  const orderIds = isEdit ? [row.orderid] : selectedRows.map((item) => item.orderid);
+
+  return {
+    form: [],
+    apiSubmit: async (form) => {
+      await apiTags(form);
+      await onSuccess?.(form, orderIds);
+    },
+    submitReloadType: 'none',
+  };
+};
+
+dialog: (ctx) =>
+  dialogTags({
+    ...ctx,
+    onSuccess(form, orderIds) {
+      refPage.current?.setList((list) =>
+        list.map((item) =>
+          orderIds.includes(item.orderid)
+            ? {
+                ...item,
+                operator: form.tags,
+              }
+            : item,
+        ),
+      );
+    },
+  });
+```
+
 ## 使用建议
 
 - 标准增删改弹窗优先走 `form + apiDetail + apiSubmit`。

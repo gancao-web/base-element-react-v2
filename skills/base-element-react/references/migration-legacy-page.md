@@ -104,7 +104,7 @@ const dialog: BaseDialog = ({ row, isEdit }): BaseDialogConfig => {
 新版：
 
 - `api.ts`
-- `requestApi('', data)`
+- `requestApi({ data })`
 
 示例：
 
@@ -196,7 +196,7 @@ BaseElement.use({
 export async function apiSearch(param: any) {
   if (!param.scene_id) return false;
 
-  const res: any = await requestApi('', data);
+  const res: any = await requestApi({ data });
   return {
     ...res,
     list: (res.list || []).map((item: any) => ({

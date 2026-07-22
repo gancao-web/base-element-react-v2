@@ -58,12 +58,19 @@ export default () => {
 refPage.current?.getParam();
 refPage.current?.getParamValid();
 refPage.current?.setParam({ kw: 'test' });
+refPage.current?.setList(newList);
 refPage.current?.refresh();
 refPage.current?.reload();
 refPage.current?.reset();
 refPage.current?.openDialog(dialog, '标题', row);
 refPage.current?.closeDialog();
 ```
+
+## 页面侧操作 refPage
+
+- 当页面内需要主动刷新列表、打开弹窗，或在弹窗成功回调里直接改当前列表数据时，优先在页面组件里显式声明 `refPage`，再传给 `BasePage`。
+- 这类场景不要依赖 `dialog(ctx)` 里拿到的 `ctx.refPage` 做页面级状态编排；调用链一长时，可读性和复用性都会变差。
+- 需要即时更新当前表格而不重新请求列表时，使用 `refPage.current?.setList(...)` 做不可变更新。弹窗提交后的完整示例见 [提交成功后交给调用者处理](dialog.md#提交成功后交给调用者处理)。
 
 ## 页面搭建顺序
 
